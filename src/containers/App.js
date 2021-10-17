@@ -3,7 +3,6 @@ import CardList from "../components/CardList";
 import SearchBox from "../components/SearchBox";
 import Scroll from "../components/Scroll";
 import "./App.css";
-import { cousins } from "../components/cousins";
 import Filter from "../components/Filter";
 import Note from "../components/Note";
 
@@ -38,8 +37,23 @@ const App = () => {
     return true;
   });
 
+  async function getCousins() {
+    try {
+      const response = await fetch(
+        "https://announcement-server-f2r5n.ondigitalocean.app/cousins"
+      );
+      const parsedResponse = await response.json()
+      console.log(parsedResponse);
+      if (parsedResponse.isSuccess) {
+        setCousinsList(parsedResponse.cousins)
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
   useEffect(() => {
-    setCousinsList(cousins);
+    getCousins()
+    // setCousinsList(cousins);
   }, []);
 
   const onSearchChange = (event) => {
