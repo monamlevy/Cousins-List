@@ -17,11 +17,11 @@ const Note = () => {
       <Notepad />
       Note
       {showNote ? (
-        <div className="note-popup br2" onClick={(e) => e.stopPropagation()}>
+        <div className="note-popup br2 shadow-3" onClick={(e) => e.stopPropagation()}>
           <p>Hello fam!</p>
           Thank you for checking out my mini project. 
-          I hope this  can help us keep track of each other's special dates.
-          I really started this project for me, but thought we could all benefit from it.
+          I hope this  can help us keep track of each other's info, people and dates.
+          I really started this project for me, but thought we could all use it.
           <p>If there is something you want fixed, added, removed, or updated, please let me know.
              You have my contact info ;)
           </p>

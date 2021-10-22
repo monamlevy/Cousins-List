@@ -40,9 +40,6 @@ const Filter = (props) => {
           <div onClick={() => setShowHasChildren(!showHasChildren)}>
             <input type="checkbox" checked={showHasChildren} /> children
           </div>
-          <div>
-            <input type="checkbox" /> birthday
-          </div>
         </div>
       ) : null}
     </div>

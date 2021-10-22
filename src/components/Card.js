@@ -9,8 +9,6 @@ const Card = ({ name, bday, phone, id, x, pic }) => {
       <img alt="cousins" src={pic || `https://robohash.org/${id}?200x200`} />
       <div>
         <h2>{name}</h2>
-        {/* <p>{bday}</p>
-               <p>{phone}</p> */}
       </div>
     </div>
   );

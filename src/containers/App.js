@@ -5,6 +5,7 @@ import Scroll from "../components/Scroll";
 import "./App.css";
 import Filter from "../components/Filter";
 import Note from "../components/Note";
+import { fakeCousins } from "../components/fakeCousins";
 
 const App = () => {
   const [cousinsList, setCousinsList] = useState([]);
@@ -14,7 +15,7 @@ const App = () => {
   const [showSingle, setShowSingle] = useState(true);
   const [showMarried, setShowMarried] = useState(true);
   const [showHasChildren, setShowHasChildren] = useState(true);
-  const filteredCousins = cousinsList.filter((cousin) => {
+  const filteredCousins = cousinsList?.filter((cousin) => {
     if (!showLadies && !showGents) return false;
     if (!cousin.name.toLowerCase().includes(searchfield.toLowerCase())) {
       return false;
@@ -40,7 +41,7 @@ const App = () => {
   async function getCousins() {
     try {
       const response = await fetch(
-        "https://announcement-server-f2r5n.ondigitalocean.app/cousins"
+        "https://announcement-server-f2r5n.ondigitalocean.app/fakeCousins"
       );
       const parsedResponse = await response.json()
       console.log(parsedResponse);
@@ -53,20 +54,20 @@ const App = () => {
   }
   useEffect(() => {
     getCousins()
-    // setCousinsList(cousins);
+    // setCousinsList(fakeCousins);
   }, []);
 
   const onSearchChange = (event) => {
     setSearchfield(event.target.value);
   };
 
-  return !cousinsList.length ? (
+  return !cousinsList?.length ? (
     <h1>Loading your peeps</h1>
   ) : (
     <div className="page-wrapper">
       <div className="note-title">
         <Note />
-        <h1>Espera Cousins</h1>
+        <h1>Our Cousins</h1>
         <div className="message-me"></div>
       </div>
       <div className="search">
